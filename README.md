@@ -29,11 +29,11 @@ import binCraft_decoder
 import http.client
 import json
 
-url = '127.0.0.1'
+host = '127.0.0.1'
 port = 8080
 path = '/data/aircraft.binCraft.zst'
 
-conn = http.client.HTTPConnection(url, port)
+conn = http.client.HTTPConnection(host, port)
 conn.request('GET', path)
 
 response = conn.getresponse()
