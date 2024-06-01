@@ -52,9 +52,13 @@ def getType(t):
         return 'mode_ac'
     return 'unknown'
 
-def binCraftReader(file,zstd_compressed=False):
-    with open(file, "rb") as f:
-        data = f.read()
+def binCraftReader(obj, zstd_compressed=False):
+    # `obj` is File or Python's Object?
+    try:
+        with open(obj, "rb") as f:
+            data = f.read()
+    except (FileNotFoundError, ValueError, OSError):
+        data = obj
 
     if zstd_compressed:
         import zstd
